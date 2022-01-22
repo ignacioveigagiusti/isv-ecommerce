@@ -2,6 +2,7 @@ import React from 'react';
 import './itemListContainer.module.css'
 
 function ItemCount() {
+    
     return (  
         <div>
             <p>Cantidad</p>
