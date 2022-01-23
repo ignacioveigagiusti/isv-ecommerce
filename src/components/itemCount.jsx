@@ -12,6 +12,10 @@ function ItemCount( { initial, stock } ) {
         setCount(count>0 ? count-1 : count);
     }
 
+    const addToCart = () => {
+        console.log('Añadido al carrito');
+    }
+
     return (  
         <div>
             <p>Cantidad</p>
@@ -28,7 +32,7 @@ function ItemCount( { initial, stock } ) {
                     </button>
                 </span>
             </div>
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary" onClick={addToCart}>
                 Añadir
             </button>
         </div>
