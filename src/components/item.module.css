@@ -1,0 +1,45 @@
+.itemCard {
+    border-radius: 16px;
+    background: lavender;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    width: 250px;
+}
+
+.itemTitle {
+    display: flex;
+    flex-flow: column;
+}
+
+.itemPicture {
+    background: ghostwhite;
+}
+
+.itemDetail {
+    padding: 8px 0;
+    background: ghostwhite;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.itemDetail h2 {
+margin: 0;
+}
+
+.itemCounter {
+    padding: 8px;
+}
+
+.itemCount {
+    display: flex;
+    flex-flow: column;
+    gap: 2px; 
+}
+
+.addToCartBtn {
+    display: flex;
+    flex-flow: column;
+    width: fit-content;
+    align-self: center;
+}

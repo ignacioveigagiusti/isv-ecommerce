@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './itemListContainer.module.css';
+import styles from './item.module.css';
 
 function ItemCount( { initial, stock } ) {
     const [count,setCount] = useState(initial);
@@ -17,7 +17,7 @@ function ItemCount( { initial, stock } ) {
     }
 
     return (  
-        <div>
+        <div className={styles.itemCount}>
             <p>Cantidad</p>
             <div className="input-group">
                 <span className="input-group-btn">
@@ -32,7 +32,7 @@ function ItemCount( { initial, stock } ) {
                     </button>
                 </span>
             </div>
-            <button type="button" className="btn btn-primary" onClick={addToCart}>
+            <button type="button" className={`btn btn-primary ${styles.addToCartBtn}`} onClick={addToCart}>
                 Añadir
             </button>
         </div>

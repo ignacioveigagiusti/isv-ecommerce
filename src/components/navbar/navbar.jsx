@@ -1,5 +1,6 @@
 import React from 'react';
 import CartWidget from '../cartWidget/cartWidget';
+import styles from './navbar.module.css'
 
 function NavBar() {
     return ( 
@@ -28,12 +29,14 @@ function NavBar() {
                         <a className="dropdown-item" href="#">Programación</a>
                         </div>
                     </li>
+                    <li className={`nav-item ${styles.search}`}>
+                        <form className='form-inline'>
+                            <input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
+                            <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
-            <form className="form-inline">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
-                    <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
             <CartWidget/>
         </nav>
      );
