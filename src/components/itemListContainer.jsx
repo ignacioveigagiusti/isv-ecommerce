@@ -10,10 +10,10 @@ export default function ItemListContainer() {
             <h1>Bienvenido a ISV Shop!</h1>
             <h2>Productos más populares</h2>
             <div className={styles.itemDetailContainer}>
-                <div><ItemCount/></div>
-                <div><ItemCount/></div>
-                <div><ItemCount/></div>
-                <div><ItemCount/></div>
+                <div><ItemCount stock='10' initial='1'/></div>
+                <div><ItemCount stock='10' initial='1'/></div>
+                <div><ItemCount stock='10' initial='1'/></div>
+                <div><ItemCount stock='10' initial='1'/></div>
             </div>
         </div>
     );
