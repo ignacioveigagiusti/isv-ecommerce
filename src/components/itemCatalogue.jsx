@@ -20,3 +20,15 @@ export const getItems = new Promise( (res,rej) => {
         rej('No Items found')
     }
 })
+
+export const getItemDetail = new Promise( (res,rej) => {
+    let condition = true;
+    if (condition) {
+        setTimeout(()=>{
+            res(items);
+        }, 2000)
+    }
+    else{
+        rej('No Items found')
+    }
+})

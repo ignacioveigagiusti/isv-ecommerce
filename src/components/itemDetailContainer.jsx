@@ -16,6 +16,7 @@ export default function ItemDetailContainer() {
         .catch(err => alert("Ha habido un error al buscar los productos!"))
         .finally(()=> setLoading(false))
     }, []);
+
     return (  
         <div className='container'>
             <div className={styles.itemDetailContainer}>
