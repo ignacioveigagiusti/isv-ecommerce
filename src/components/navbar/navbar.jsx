@@ -18,17 +18,17 @@ function NavBar() {
                         <NavLink to='/' className="nav-link" >Home <span className="sr-only">(current)</span></NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to='/productos' className="nav-link" href="#">Productos</NavLink>
+                        <NavLink to='/cat/productos' className="nav-link" >Productos</NavLink>
                     </li>
                     <li className="nav-item dropdown">
-                        <NavLink to='/servicios' className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <NavLink to='/cat/servicios' className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Servicios
                         </NavLink>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <NavLink to='/servicios/instalacion' className="dropdown-item" href="#">Instalación</NavLink>
-                        <NavLink to='/servicios/consultoria' className="dropdown-item" href="#">Consultoría</NavLink>
+                        <NavLink to='/cat/servicios/instalacion' className="dropdown-item" >Instalación</NavLink>
+                        <NavLink to='/cat/servicios/consultoria' className="dropdown-item" >Consultoría</NavLink>
                         <div className="dropdown-divider"></div>
-                        <NavLink to='/servicios/programacion' className="dropdown-item" href="#">Programación</NavLink>
+                        <NavLink to='/cat/servicios/programacion' className="dropdown-item" >Programación</NavLink>
                         </div>
                     </li>
                     <li className={`nav-item ${styles.search}`}>
@@ -39,7 +39,7 @@ function NavBar() {
                     </li>
                 </ul>
             </div>
-            <CartWidget/>
+            <NavLink to='/cart'><CartWidget/></NavLink>
         </nav>
      );
 }
