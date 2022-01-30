@@ -6,9 +6,23 @@
     width: 250px;
 }
 
+.itemDetailCard{
+    border-radius: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    width: 100%;
+}
+
 .itemTitle {
     display: flex;
     flex-flow: column;
+    font-size: 1.6rem;
+}
+
+.itemCategory{
+    font-weight: normal;
+    font-size: 1.6rem;
+    color: grey;
 }
 
 .itemPicture {
@@ -23,6 +37,10 @@
     align-items: center;
 }
 
+.itemDescription{
+    font-weight: normal;
+}
+
 .itemDetail h2 {
 margin: 0;
 }
@@ -35,6 +53,8 @@ margin: 0;
     display: flex;
     flex-flow: column;
     gap: 2px; 
+    width: 200px;
+    margin: auto;
 }
 
 .addToCartBtn {

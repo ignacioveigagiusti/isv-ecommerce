@@ -9,7 +9,7 @@ function ItemCount( { initial, stock } ) {
     }
 
     const countDecrease = () => {
-        setCount(count>0 ? count-1 : count);
+        setCount(count>1 ? count-1 : count);
     }
 
     const addToCart = () => {

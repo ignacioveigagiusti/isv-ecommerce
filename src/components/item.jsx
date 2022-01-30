@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ItemCount from './itemCount';
 import styles from './item.module.css';
 
@@ -12,9 +13,11 @@ export default function Item(item) {
           </div>
           <div className={styles.itemDetail}>
             <h2>{`$ ${item.price}`}</h2>
-            <button type="button" className="btn btn-secondary">
-              Detalle
-            </button>
+            <Link to={`/detalle/${item.id}`}> 
+              <button type="button" className="btn btn-secondary">
+                Detalle
+              </button>
+            </Link>
           </div>
           <div className={styles.itemCounter}>
             <ItemCount stock='10' initial='1'/>

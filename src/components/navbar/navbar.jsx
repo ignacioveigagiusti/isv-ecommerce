@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import CartWidget from '../cartWidget/cartWidget';
 import styles from './navbar.module.css'
 
 function NavBar() {
     return ( 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">ISV Shop</a>
+            <Link to='/' className="navbar-brand" >ISV Shop</Link>
+
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -13,20 +15,20 @@ function NavBar() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                        <NavLink to='/' className="nav-link" >Home <span className="sr-only">(current)</span></NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Productos</a>
+                        <NavLink to='/productos' className="nav-link" href="#">Productos</NavLink>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <NavLink to='/servicios' className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Servicios
-                        </a>
+                        </NavLink>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Instalación</a>
-                        <a className="dropdown-item" href="#">Consultoría</a>
+                        <NavLink to='/servicios/instalacion' className="dropdown-item" href="#">Instalación</NavLink>
+                        <NavLink to='/servicios/consultoria' className="dropdown-item" href="#">Consultoría</NavLink>
                         <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">Programación</a>
+                        <NavLink to='/servicios/programacion' className="dropdown-item" href="#">Programación</NavLink>
                         </div>
                     </li>
                     <li className={`nav-item ${styles.search}`}>

@@ -24,4 +24,5 @@ h2 {
 
 .itemDetailContainer{
     display: flex;
+    justify-content: center;
 }
