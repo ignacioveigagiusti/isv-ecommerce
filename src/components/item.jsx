@@ -2,8 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './itemCount';
 import styles from './item.module.css';
+import { useCartContext } from '../context/cartContext';
 
 export default function Item(item) {
+
+  const { cartList, addToCart } = useCartContext()
+
+  function onAdd(quantity){
+    addToCart( {...item, cantidad: quantity} );
+  }
+
   return <div className={styles.itemCard}>
           <div className={styles.itemTitle}>
             <span>{item.name}</span><span>{item.category}</span>
@@ -20,7 +28,7 @@ export default function Item(item) {
             </Link>
           </div>
           <div className={styles.itemCounter}>
-            <ItemCount stock='10' initial='1'/>
+            <ItemCount stock='10' initial='1' onAdd={onAdd}/>
           </div>
         </div>;
 }
