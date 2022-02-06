@@ -40,3 +40,12 @@
 .container {
   margin-bottom: 20px;
 }
+
+.form-control[readonly]{
+  background-color:white;
+  cursor:default;
+}
+
+.quantityDisplay {
+  width: 75px !important;
+}
