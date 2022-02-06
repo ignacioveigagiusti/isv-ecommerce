@@ -8,8 +8,8 @@ export default function Item(item) {
 
   const { cartList, addToCart } = useCartContext()
 
-  function onAdd(quantity){
-    addToCart( {...item, cantidad: quantity} );
+  function onAdd(itemQuantity){
+    addToCart( {...item, quantity: itemQuantity} );
   }
 
   return <div className={styles.itemCard}>

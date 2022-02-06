@@ -10,9 +10,9 @@ export default function ItemDetail(item) {
   const [hasAdded, setHasAdded] = useState(0);
   const { cartList, addToCart } = useCartContext();
 
-  function onAdd(item, quantity){
-    addToCart( {...item, cantidad: quantity} );
-    setHasAdded(quantity);
+  function onAdd(itemQuantity){
+    addToCart( {...item, quantity: Number(itemQuantity)} );
+    setHasAdded(itemQuantity);
   }
 
   return <div className={styles.itemDetailCard}>

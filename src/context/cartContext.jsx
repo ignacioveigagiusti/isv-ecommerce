@@ -8,14 +8,26 @@ export default function CartContextProvider({ children }) {
     const [cartList, setCartList] = useState([]);
 
     function addToCart(item){
-        setCartList([...cartList, item])
+        if (findDuplicate(item)){
+            cartList.find( ({id}) => id === item.id).quantity += item.quantity;
+        }else{
+            setCartList([...cartList, item]);
+        }
     }
 
-    function clearCart(item){
+    function clearCart(){
         setCartList([])
     }
 
-    return <cartContext.Provider value={{ cartList, addToCart, clearCart }}>
+    function removeItem(item){
+        setCartList(cartList.filter(({id}) => id !== item.id))
+    }
+
+    function findDuplicate(item){
+        return cartList.find( ({id}) => id === item.id)
+    }
+
+    return <cartContext.Provider value={{ cartList, addToCart, clearCart, removeItem }}>
         {children}
     </cartContext.Provider>;
 }
