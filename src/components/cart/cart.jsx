@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/cartContext';
 import styles from './cart.module.css';
@@ -29,14 +29,14 @@ export default function Cart() {
             <h2>Su carro de compras:</h2>
             <div className={styles.cartContainer}>
               {cartList.map( i  => 
-              <div className={styles.itemCard}>
+              <div key={i.id} className={styles.itemCard}>
                 <div className={styles.itemTitle}>
                   <span>{i.name}</span><span>Cantidad: {i.quantity}</span>
                 </div>
 
                 <div className={styles.itemDetail}>
                   <div className={styles.itemPicture}>
-                    <img src={i.picture} width='100px' height='100px'/> 
+                    <img src={i.picture} width='100px' height='100px' alt={`${i.name}`}/> 
                   </div>
                   <h2>{`Precio: $ ${i.price*i.quantity}`}</h2>
                   <div>
@@ -45,7 +45,7 @@ export default function Cart() {
                         Detalle
                       </button>
                     </Link>
-                    <button key={i.id} className="btn btn-secondary" onClick={() => remove(i)}>Quitar</button>
+                    <button className="btn btn-secondary" onClick={() => remove(i)}>Quitar</button>
                   </div>
                 </div>
               </div>)}    

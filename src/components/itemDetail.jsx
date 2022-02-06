@@ -8,7 +8,7 @@ import { useState } from "react/cjs/react.development";
 export default function ItemDetail(item) {
 
   const [hasAdded, setHasAdded] = useState(0);
-  const { cartList, addToCart } = useCartContext();
+  const { addToCart } = useCartContext();
 
   function onAdd(itemQuantity){
     addToCart( {...item, quantity: Number(itemQuantity)} );
@@ -21,7 +21,7 @@ export default function ItemDetail(item) {
           </div>
           <div className={styles.itemPictureDescription}>
             <div>
-              <img src={item.picture} width='200px' height='200px'/>
+              <img src={item.picture} width='200px' height='200px'  alt={`${item.name}`}/>
             </div>
             <div className={styles.itemDescription}>
               <h3>Descripción</h3>

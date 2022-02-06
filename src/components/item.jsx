@@ -6,7 +6,7 @@ import { useCartContext } from '../context/cartContext';
 
 export default function Item(item) {
 
-  const { cartList, addToCart } = useCartContext()
+  const { addToCart } = useCartContext()
 
   function onAdd(itemQuantity){
     addToCart( {...item, quantity: itemQuantity} );
@@ -17,7 +17,7 @@ export default function Item(item) {
             <span>{item.name}</span><span>{item.category}</span>
           </div>
           <div className={styles.itemPicture}>
-            <img src={item.picture} width='200px' height='200px'/>
+            <img src={item.picture} width='200px' height='200px'  alt={`${item.name}`}/>
           </div>
           <div className={styles.itemDetail}>
             <h2>{`$ ${item.price}`}</h2>
