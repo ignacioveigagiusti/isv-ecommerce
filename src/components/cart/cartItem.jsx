@@ -41,19 +41,17 @@ export default function CartItem(item) {
                         </div>
                         <div>
                             <h2>{`Precio: $ ${item.price*quantity}`}</h2>
-                            <span>Cantidad: {item.quantity}</span>
+
                             <div className="input-group">
-                                <span className="input-group-btn">
-                                    <button type="button" className="btn btn-default btn-number" data-type="minus" data-field="quant[1]" onClick={() => subtract(item)}>
+
+                                    <button type="button" className={styles.cartItemBtn} data-type="minus" data-field="quant[1]" onClick={() => subtract(item)}>
                                         <span className="glyphicon glyphicon-minus"></span>
                                     </button>
-                                </span>
-                                {/* <input type="number" name="quant[1]" className="form-control input-number quantityDisplay" value={quantity} readOnly/> */}
-                                <span className="input-group-btn">
-                                    <button type="button" className="btn btn-default btn-number" data-type="plus" data-field="quant[1]" onClick={() => add(item)}>
+                                    <span>Cantidad: {item.quantity}</span>
+                                    <button type="button" className={styles.cartItemBtn} data-type="plus" data-field="quant[1]" onClick={() => add(item)}>
                                         <span className="glyphicon glyphicon-plus"></span>
                                     </button>
-                                </span>
+
                             </div>
                         </div>
                         <div>

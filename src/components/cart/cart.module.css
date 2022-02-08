@@ -68,3 +68,18 @@
     flex-direction: column;
     align-items: center
 }
+
+.cartItemBtn{
+    color:black;
+    background-color:transparent;
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+}
+
+.cartItemBtn:hover, .cartItemBtn:focus {
+    outline: none;
+  }

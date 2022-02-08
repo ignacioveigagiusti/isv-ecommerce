@@ -6,7 +6,7 @@ import styles from './navbar.module.css'
 
 function NavBar() {
    
-    const { cartList, quantitySum, findDuplicate, totalQuantity, addToCart } = useCartContext();
+    const { cartList, quantitySum, totalPrice, totalQuantity } = useCartContext();
     const [itemQuantity, setItemQuantity] = useState('');
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function NavBar() {
       else{
         setItemQuantity('')
       }
-    },[cartList, totalQuantity, itemQuantity]);
+    },[cartList, totalQuantity, itemQuantity, totalPrice]);
     
 
     return ( 
