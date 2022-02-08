@@ -16,7 +16,7 @@ function NavBar() {
       else{
         setItemQuantity('')
       }
-    },[cartList, findDuplicate, totalQuantity, addToCart, itemQuantity]);
+    },[cartList, totalQuantity, itemQuantity]);
     
 
     return ( 
