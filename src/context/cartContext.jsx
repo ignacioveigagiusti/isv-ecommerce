@@ -7,12 +7,14 @@ export function useCartContext() {return useContext(cartContext)}
 export default function CartContextProvider({ children }) {
     const [cartList, setCartList] = useState([]);
     const [totalPrice, setTotalPrice] = useState(priceSum());
+    const [totalQuantity, setTotalQuantity] = useState('');
 
     function addToCart(item){
         if (findDuplicate(item)){
             cartList.find( ({id}) => id === item.id).quantity += item.quantity;
         }else{
             setCartList([...cartList, item]);
+            
         }
     }
 
@@ -52,6 +54,14 @@ export default function CartContextProvider({ children }) {
         return priceSum
     }
 
+    function quantitySum(){
+        let quantitySum = 0;
+        for (let index = 0; index < cartList.length; index++) {
+            quantitySum = quantitySum + Number(cartList[index].quantity);
+        }
+        return quantitySum
+    }
+
     useEffect(() => {
       if (cartList.length === 0){
         setTotalPrice(0)
@@ -59,7 +69,7 @@ export default function CartContextProvider({ children }) {
     }, [cartList]);
     
 
-    return <cartContext.Provider value={{ cartList, addToCart, clearCart, removeItem, addQuantity, subtractQuantity, priceSum, totalPrice, setTotalPrice }}>
+    return <cartContext.Provider value={{ cartList, addToCart, clearCart, removeItem, addQuantity, subtractQuantity, priceSum, totalPrice, setTotalPrice, quantitySum, totalQuantity, setTotalQuantity, findDuplicate }}>
         {children}
     </cartContext.Provider>;
 }

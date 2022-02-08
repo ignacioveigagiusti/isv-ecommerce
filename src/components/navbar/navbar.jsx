@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useCartContext } from '../../context/cartContext';
 import CartWidget from '../cartWidget/cartWidget';
 import styles from './navbar.module.css'
 
 function NavBar() {
+   
+    const { cartList, quantitySum, findDuplicate, totalQuantity } = useCartContext();
+    const [itemQuantity, setItemQuantity] = useState('');
+
+    useEffect(() => {
+      if (cartList.length > 0){
+          setItemQuantity(quantitySum());
+      }
+      else{
+        setItemQuantity('')
+      }
+    },);
+    
+
     return ( 
     <div className={styles.navBarContainer}>
         <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -43,7 +58,7 @@ function NavBar() {
             
         </nav>
         <div className={styles.cartWidget}>
-            <NavLink to='/cart' ><CartWidget/></NavLink>
+            <NavLink to='/cart' ><CartWidget quantitySum={itemQuantity}/></NavLink>
         </div>
     </div>
      );

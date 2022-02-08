@@ -53,3 +53,7 @@
 .navbar{
   margin-bottom: 0px;
 }
+
+.navbar-brand{
+  align-self: baseline;
+}

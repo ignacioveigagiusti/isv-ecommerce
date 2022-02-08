@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './itemCount';
 import styles from './item.module.css';
@@ -6,11 +6,12 @@ import { useCartContext } from '../context/cartContext';
 
 export default function Item(item) {
 
-  const { addToCart } = useCartContext()
+  const { addToCart, setTotalQuantity, quantitySum, totalQuantity } = useCartContext()
 
   function onAdd(itemQuantity){
     addToCart( {...item, quantity: itemQuantity} );
   }
+  
 
   return <div className={styles.itemCard}>
           <div className={styles.itemTitle}>
