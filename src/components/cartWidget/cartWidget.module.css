@@ -3,10 +3,10 @@
     display: flex;
 }
 
-.idleCartWidget{
+/* .idleCartWidget{
     margin: 0 0.5rem;
     display: none;
-}
+} */
 
 .cartQuantity{
     background-color: cornflowerblue;

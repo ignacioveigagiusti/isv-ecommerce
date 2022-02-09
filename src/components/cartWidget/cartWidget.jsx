@@ -5,8 +5,8 @@ import styles from './cartWidget.module.css'
 export default function CartWidget({quantitySum}) {
     
     return (  
-        <button className={(quantitySum > 0 ? `btn btn-outline-secondary ${styles.cartWidget}` : `${styles.idleCartWidget}`)} href='#'>
-            <img src={cartIcon} className="cartIcon"/>
+        <button className={`btn btn-outline-secondary ${styles.cartWidget}`} href='#'>
+            <img src={cartIcon} className="cartIcon" alt='Cart'/>
             <p className={(quantitySum > 0 ? `${styles.cartQuantity}` : '')}>{quantitySum}</p>
         </button>
     );
