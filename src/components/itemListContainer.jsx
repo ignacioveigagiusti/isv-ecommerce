@@ -17,7 +17,6 @@ export default function ItemListContainer() {
     useEffect(() => {
         const db = getFirestore();
         
-        
         if (itemCategory) {
             if(itemSubcategory){
                 const queryCollection = query(collection(db, 'items'), where('subcategory', '==', itemSubcategory));
@@ -36,7 +35,7 @@ export default function ItemListContainer() {
         else{
         const queryCollection = collection(db, 'items');
         getDocs(queryCollection)
-        .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) )))
+        .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) ).sort((a,b) => (a.cat > b.cat) ? 1 : ((b.cat > a.cat) ? -1 : 0)) ))
         .catch(err => alert("Ha habido un error al buscar los productos!"))
         .finally(()=> setLoading(false))
         }
