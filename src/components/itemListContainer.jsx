@@ -1,3 +1,4 @@
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getItems } from './itemCatalogue';
@@ -14,22 +15,28 @@ export default function ItemListContainer() {
     const { itemSubcategory } = useParams();
 
     useEffect(() => {
+        const db = getFirestore();
+        
+        
         if (itemCategory) {
             if(itemSubcategory){
-                getItems
-                .then(res => setItems(res.filter(i => i.subcategory === itemSubcategory)))
+                const queryCollection = query(collection(db, 'items'), where('subcategory', '==', itemSubcategory));
+                getDocs(queryCollection)
+                .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) )))
                 .catch(err => alert("Ha habido un error al buscar los productos!"))
                 .finally(()=> setLoading(false)) 
             }else{
-                getItems
-                .then(res => setItems(res.filter(i => i.cat === itemCategory)))
+                const queryCollection = query(collection(db, 'items'), where('cat', '==', itemCategory));
+                getDocs(queryCollection)
+                .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) )))
                 .catch(err => alert("Ha habido un error al buscar los productos!"))
                 .finally(()=> setLoading(false))
             }
         }
         else{
-        getItems
-        .then(res => setItems(res))
+        const queryCollection = collection(db, 'items');
+        getDocs(queryCollection)
+        .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) )))
         .catch(err => alert("Ha habido un error al buscar los productos!"))
         .finally(()=> setLoading(false))
         }

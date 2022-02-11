@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 import { useParams } from 'react-router-dom';
 import ItemDetail from './itemDetail';
 import './itemListContainer.module.css'
@@ -11,8 +12,10 @@ export default function ItemDetailContainer() {
     const [loadingDetail, setLoadingDetail] = useState(true)
 
     useEffect(() => {
-        getItems
-        .then(res => setItems(res.find( ({id}) => id === itemId)))
+        const db = getFirestore();
+        const itemQuery = doc(db, 'items', itemId);
+        getDoc(itemQuery)
+        .then(res => setItems( { id: res.id, ...res.data()} ))
         .catch(err => alert("Ha habido un error al buscar los productos!"))
         .finally(()=> setLoadingDetail(false))
     }, []);
