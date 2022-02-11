@@ -8,15 +8,3 @@ const items = [
     { id:'7', category:'Servicio', cat:'servicios', subcategory:'instalacion', name:'Mantenimiento (h)', price:1000 , stock:10 , picture:'/assets/aislamiento.png', description:'Mantenimiento, arreglo y refacción de cerramientos existentes que hayan podido haber perdido parte de sus cualidades de absorción, reflexión o aislamiento acústico.'},
     { id:'8', category:'Programación', cat:'servicios', subcategory:'programacion', name:'Desarrollo de Aplicaciones (h)', price:2500 , stock:10 , picture:'/assets/logoISV.png', description:'Programación de aplicaciones con fines ingenieriles relacionados al ámbito de la acústica. Lenguajes: MATLAB, Python, R, posibilidad de desarrollo de app web (MERN Stack).'}
 ];
-
-export const getItems = new Promise( (res,rej) => {
-    let condition = true;
-    if (condition) {
-        setTimeout(()=>{
-            res(items);
-        }, 2000)
-    }
-    else{
-        rej('No Items found')
-    }
-})

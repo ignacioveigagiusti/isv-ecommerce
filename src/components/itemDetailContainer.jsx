@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './itemDetail';
 import './itemListContainer.module.css'
 import styles from './itemListContainer.module.css'
-import { getItems } from './itemCatalogue';
 
 export default function ItemDetailContainer() {
     const { itemId } = useParams()
