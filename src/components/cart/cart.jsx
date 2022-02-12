@@ -1,4 +1,5 @@
 import React from 'react';
+import { addDoc, collection, doc, documentId, getFirestore, query, updateDoc, where, getDocs } from 'firebase/firestore'
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/cartContext';
 import styles from './cart.module.css';
@@ -7,9 +8,35 @@ import CartItem from './cartItem';
 export default function Cart() {
 
   const { cartList, clearCart, totalPrice, setTotalPrice } = useCartContext()
+  const db = getFirestore();
+  const orderCollection = collection(db, 'orders')
 
-  function buy(){
-    console.log(cartList)
+  async function buy(){
+    let order = {};
+    order.buyer = {name: 'Buyer Smith', phone: '1122334455', email: 'buyer@smith.com'};
+    order.items = [];
+    cartList.map(i => order.items.push({id: i.id, name: i.name, price: i.price, quantity: i.quantity}));
+    order.total = totalPrice;
+    addDoc(orderCollection, order)
+    .then(res => console.log(res))
+
+    const queryCollection = collection(db, 'items')
+
+    const updateStock = query(queryCollection, where( documentId(), 'in', cartList.map(i => i.id)));
+    
+    const querySnapshot = await getDocs(updateStock)
+    querySnapshot.forEach((docum) => {
+      console.log(docum.data().stock);
+      let [itemInOrder] = order.items.filter(i => i.id === docum.id)
+      console.log(itemInOrder.quantity)
+      let newStock = docum.data().stock - itemInOrder.quantity
+      console.log(newStock)
+      const docToUpdate = doc(db, 'items', docum.id)
+      console.log(docToUpdate)
+      updateDoc(docToUpdate, {stock: newStock})
+    });
+
+    
   }
 
   function clear(){

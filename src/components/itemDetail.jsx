@@ -33,7 +33,7 @@ export default function ItemDetail(item) {
           </div>
           <div className={styles.itemCounter}>
             { hasAdded === 0 ?
-                <ItemCount stock='10' initial='1' onAdd={onAdd}/>
+                <ItemCount stock={item.stock} initial='1' onAdd={onAdd}/>
               :
               <>
                 <Link to='/cart'>
