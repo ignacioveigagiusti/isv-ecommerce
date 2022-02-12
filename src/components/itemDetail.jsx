@@ -1,9 +1,8 @@
 import { useCartContext } from "../context/cartContext";
-import React from 'react';
+import React, {useState} from 'react';
 import ItemCount from './itemCount';
 import styles from './item.module.css';
 import { Link } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
 
 export default function ItemDetail(item) {
 

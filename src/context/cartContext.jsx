@@ -11,8 +11,10 @@ export default function CartContextProvider({ children }) {
 
     function addToCart(item){
         if (findDuplicate(item)){
-            cartList.find( ({id}) => id === item.id).quantity += item.quantity;
-            setTotalQuantity(quantitySum());
+            if (cartList.find( ({id}) => id === item.id).quantity < item.stock){
+                cartList.find( ({id}) => id === item.id).quantity += item.quantity;
+                setTotalQuantity(quantitySum());
+            }
         }else{
             setCartList([...cartList, item]);
             setTotalQuantity(quantitySum());
