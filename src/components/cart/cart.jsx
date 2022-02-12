@@ -26,13 +26,9 @@ export default function Cart() {
     
     const querySnapshot = await getDocs(updateStock)
     querySnapshot.forEach((docum) => {
-      console.log(docum.data().stock);
       let [itemInOrder] = order.items.filter(i => i.id === docum.id)
-      console.log(itemInOrder.quantity)
       let newStock = docum.data().stock - itemInOrder.quantity
-      console.log(newStock)
       const docToUpdate = doc(db, 'items', docum.id)
-      console.log(docToUpdate)
       updateDoc(docToUpdate, {stock: newStock})
     });
 
@@ -48,7 +44,7 @@ export default function Cart() {
               <>
                 <h2>Su carro de compras se encuentra vacío.</h2>
                 <Link to='/'>
-                  <button type="button" className="btn btn-primary" onClick={buy}>
+                  <button type="button" className="btn btn-primary">
                     Seguir comprando
                   </button>
                 </Link>
