@@ -40,6 +40,7 @@ export default function Cart() {
                         Vaciar carro
                     </button> 
                     <h2>Total: $ {totalPrice}</h2>
+                    <p className={styles.disclaimer}>Nota: Si adquiere servicios, nos pondremos en contacto con usted a la brevedad para efectuar la consulta necesaria. La tarifa paga sólo cubre el precio de la consulta, el resto del presupuesto se definirá a partir de la misma, dependiendo de los materiales, requerimientos y complejidad de la tarea.</p>
               </>
             }
           </div>;

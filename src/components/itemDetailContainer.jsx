@@ -7,7 +7,7 @@ import styles from './itemListContainer.module.css'
 
 export default function ItemDetailContainer() {
     const { itemId } = useParams()
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState({});
     const [loadingDetail, setLoadingDetail] = useState(true)
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function ItemDetailContainer() {
         .then(res => setItems( { id: res.id, ...res.data()} ))
         .catch(err => alert("Ha habido un error al buscar los productos!"))
         .finally(()=> setLoadingDetail(false))
-    }, []);
+    }, [itemId]);
 
     return (  
         <div className='container'>

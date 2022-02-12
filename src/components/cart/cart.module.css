@@ -83,3 +83,9 @@
 .cartItemBtn:hover, .cartItemBtn:focus {
     outline: none;
   }
+
+  .disclaimer{
+      font-style: italic;
+      width:75%;
+      margin: auto;
+  }

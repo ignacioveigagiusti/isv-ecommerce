@@ -20,13 +20,13 @@ export default function ItemListContainer() {
             if(itemSubcategory){
                 const queryCollection = query(collection(db, 'items'), where('subcategory', '==', itemSubcategory));
                 getDocs(queryCollection)
-                .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) )))
+                .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) ).sort((a,b) => (((a.price > b.price) ? 1 : (a.price < b.price) ? -1 : 0)) )))
                 .catch(err => alert("Ha habido un error al buscar los productos!"))
                 .finally(()=> setLoading(false)) 
             }else{
                 const queryCollection = query(collection(db, 'items'), where('cat', '==', itemCategory));
                 getDocs(queryCollection)
-                .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) )))
+                .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) ).sort((a,b) => (((a.price > b.price) ? 1 : (a.price < b.price) ? -1 : 0)) )))
                 .catch(err => alert("Ha habido un error al buscar los productos!"))
                 .finally(()=> setLoading(false))
             }
@@ -34,7 +34,7 @@ export default function ItemListContainer() {
         else{
         const queryCollection = collection(db, 'items');
         getDocs(queryCollection)
-        .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) ).sort((a,b) => (a.cat > b.cat) ? 1 : ((b.cat > a.cat) ? -1 : 0)) ))
+        .then(res => setItems(res.docs.map(i => ( { id: i.id, ...i.data() } ) ).sort((a,b) => (a.cat > b.cat) ? 1 : (b.cat > a.cat) ? -1 : ((a.price > b.price) ? 1 : (a.price < b.price) ? -1 : 0)) ))
         .catch(err => alert("Ha habido un error al buscar los productos!"))
         .finally(()=> setLoading(false))
         }
