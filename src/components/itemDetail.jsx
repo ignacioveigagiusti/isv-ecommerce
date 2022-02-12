@@ -37,12 +37,12 @@ export default function ItemDetail(item) {
               :
               <>
                 <Link to='/cart'>
-                  <button type="button" className="btn btn-primary">
+                  <button type="button" className={`btn btn-primary ${styles.itemDetailBtn}`}>
                     Finalizar compra
                   </button>
                 </Link>
                 <Link to='/'>
-                <button type="button" className="btn btn-secondary">
+                <button type="button" className={`btn btn-secondary ${styles.itemDetailBtn}`}>
                   Seguir comprando
                 </button>
                 </Link>

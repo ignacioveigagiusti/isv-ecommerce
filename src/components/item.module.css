@@ -61,6 +61,10 @@
 margin: 0;
 }
 
+.itemDetailBtn {
+    margin: 4px;
+}
+
 .itemCounter {
     padding: 8px;
 }
@@ -78,4 +82,10 @@ margin: 0;
     flex-flow: column;
     width: fit-content;
     align-self: center;
+}
+
+@media screen and (max-width: 480px) {
+    .itemPictureDescription{
+        flex-direction: column;
+    }
 }

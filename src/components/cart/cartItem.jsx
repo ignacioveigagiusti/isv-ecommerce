@@ -37,7 +37,7 @@ export default function CartItem(item) {
                     
                     <div className={styles.itemDetail}>
                         <div className={styles.itemPicture}>
-                            <img src={item.picture} width='100px' height='100px' alt={`${item.name}`}/> 
+                            <img src={item.picture} className={styles.itemPicture__Img} alt={`${item.name}`}/> 
                         </div>
                         <div>
                             <h2>{`Precio: $ ${item.price*quantity}`}</h2>
@@ -56,7 +56,7 @@ export default function CartItem(item) {
                         </div>
                         <div>
                             <Link to={`/detalle/${item.id}`}> 
-                                <button type="button" className="btn btn-light">
+                                <button type="button" className={`btn btn-light ${styles.detailBtn}`}>
                                     Detalle
                                 </button>
                             </Link>
