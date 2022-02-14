@@ -47,12 +47,6 @@ function NavBar() {
                         <NavLink to='/cat/servicios/programacion' className="dropdown-item" >Programación</NavLink>
                         </div>
                     </li>
-                    {/* <li className={`nav-item ${styles.search}`}>
-                        <form className='form-inline'>
-                            <input className="form-control mr-sm-1" type="search" placeholder="Buscar" aria-label="Search" />
-                            <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
-                        </form>
-                    </li> */}
                 </ul>
             </div>
             

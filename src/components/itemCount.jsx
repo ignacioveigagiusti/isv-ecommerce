@@ -13,14 +13,6 @@ function ItemCount( { initial, stock, onAdd } ) {
         setCount(count>1 ? count-1 : count);
     }
 
-    // const countInput = () => {
-    //     if(count>1 && count<stock) {
-    //         setCount(count);
-    //     }else{
-    //         setCount(1);
-    //     }
-    // }
-
     const addCountToCart = () => {
         onAdd(Number(count));
     }

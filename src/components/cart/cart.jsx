@@ -12,14 +12,16 @@ export default function Cart() {
   const orderCollection = collection(db, 'orders')
 
   async function buy(){
+    //Order creation
     let order = {};
     order.buyer = {name: 'Buyer Smith', phone: '1122334455', email: 'buyer@smith.com'};
     order.items = [];
     cartList.map(i => order.items.push({id: i.id, name: i.name, price: i.price, quantity: i.quantity}));
     order.total = totalPrice;
     addDoc(orderCollection, order)
-    .then(res => console.log(res))
 
+
+    //Stock update
     const queryCollection = collection(db, 'items')
 
     const updateStock = query(queryCollection, where( documentId(), 'in', cartList.map(i => i.id)));
@@ -27,9 +29,13 @@ export default function Cart() {
     const querySnapshot = await getDocs(updateStock)
     querySnapshot.forEach((docum) => {
       let [itemInOrder] = order.items.filter(i => i.id === docum.id)
-      let newStock = docum.data().stock - itemInOrder.quantity
-      const docToUpdate = doc(db, 'items', docum.id)
-      updateDoc(docToUpdate, {stock: newStock})
+      console.log(docum.data().cat);
+      //Update stock unless it is a service
+      if (docum.data().cat !== 'servicios'){
+        let newStock = docum.data().stock - itemInOrder.quantity
+        const docToUpdate = doc(db, 'items', docum.id)
+        updateDoc(docToUpdate, {stock: newStock})
+      }
     });
 
     

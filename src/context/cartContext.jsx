@@ -10,6 +10,7 @@ export default function CartContextProvider({ children }) {
     const [totalQuantity, setTotalQuantity] = useState('');
 
     function addToCart(item){
+        // Nested conditional to increase the quantity if the item is already in the cartList and stock hasn't been depleted yet
         if (findDuplicate(item)){
             if (cartList.find( ({id}) => id === item.id).quantity < item.stock){
                 cartList.find( ({id}) => id === item.id).quantity += item.quantity;
@@ -25,6 +26,7 @@ export default function CartContextProvider({ children }) {
         setCartList([]);
     }
 
+    //remove 1 item from the cartList
     function removeItem(item){
         setCartList(cartList.filter(({id}) => id !== item.id))
     }
@@ -33,6 +35,7 @@ export default function CartContextProvider({ children }) {
         return cartList.find( ({id}) => id === item.id)
     }
 
+    //Functions to add and subtract from the item's quantity with buttons in the cart view
     function addQuantity(item){
         let quantityToAdd = Number(cartList.find( ({id}) => id === item.id).quantity);
         if (quantityToAdd<item.stock) {
@@ -57,6 +60,7 @@ export default function CartContextProvider({ children }) {
         return priceSum
     }
 
+    //Get total quantity sum for the cart widget
     function quantitySum(){
         let quantitySum = 0;
         for (let index = 0; index < cartList.length; index++) {
@@ -65,6 +69,7 @@ export default function CartContextProvider({ children }) {
         return quantitySum
     }
 
+    //useEffect hook to make total price and quantity zero when the cart list is empty
     useEffect(() => {
       if (cartList.length === 0){
         setTotalPrice(0)

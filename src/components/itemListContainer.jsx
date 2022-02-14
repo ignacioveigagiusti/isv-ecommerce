@@ -16,6 +16,7 @@ export default function ItemListContainer() {
     useEffect(() => {
         const db = getFirestore();
         
+        //Filter by cat or subcategory from navbar routing
         if (itemCategory) {
             if(itemSubcategory){
                 const queryCollection = query(collection(db, 'items'), where('subcategory', '==', itemSubcategory));
@@ -38,7 +39,7 @@ export default function ItemListContainer() {
         .catch(err => alert("Ha habido un error al buscar los productos!"))
         .finally(()=> setLoading(false))
         }
-        // Cambiar título
+        // Changing title dynamically
         if (itemCategory === 'productos') {
             setListTitle('Productos');
         }

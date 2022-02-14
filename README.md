@@ -1,3 +1,7 @@
+Hello! This e-commerce website was created by Ignacio Sebastián Veiga, in the context of a React.js course at Coderhouse (the Argentinian programming school).
+
+------------------------------------Create React App Documentation------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
