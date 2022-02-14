@@ -14,7 +14,9 @@ function ItemCount( { initial, stock, onAdd } ) {
     }
 
     const addCountToCart = () => {
+        setLoadingAdd(true);
         onAdd(Number(count));
+        setLoadingAdd(false);
     }
 
     return (  
