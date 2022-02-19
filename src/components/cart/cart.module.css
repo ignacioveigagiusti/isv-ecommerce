@@ -91,6 +91,15 @@
     outline: none;
 }
 
+.buyerForm{
+    width:35rem;
+    margin: auto;
+    padding: 10px;
+    border-radius: 16px;
+    background-color: rgb(245, 245, 245);
+}
+
+
 .disclaimer{
     font-style: italic;
     width:75%;
@@ -98,9 +107,18 @@
     margin-bottom: 1.5rem;
 }
 
+.orderDetail{
+    font-weight: normal;
+    font-size: 1.65rem;
+}
+
 @media screen and (max-width: 480px) {
     .detailBtn{
         display: none;
+    }
+
+    .buyerForm{
+        width:75%;
     }
 
     .itemPicture__Img{
@@ -108,3 +126,4 @@
         height: 75px;
     }
 }
+
