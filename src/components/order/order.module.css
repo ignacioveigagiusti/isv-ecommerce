@@ -1,0 +1,27 @@
+.orderCard {
+    border-radius: 16px;
+    background: lavender;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    width: 250px;
+    margin: auto;
+}
+
+.orderTitle {
+    display: flex;
+    flex-flow: column;
+    font-size: 1.6rem;
+}
+
+.buyerDetail {
+    background: floralwhite;
+}
+
+.items {
+    background: ghostwhite;
+}
+
+.loginForm {
+    width: 200px;
+    margin: auto;
+}

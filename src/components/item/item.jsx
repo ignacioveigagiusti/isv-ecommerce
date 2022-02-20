@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './itemCount';
 import styles from './item.module.css';
-import { useCartContext } from '../context/cartContext';
+import { useCartContext } from '../../context/cartContext';
 
 export default function Item(item) {
 
