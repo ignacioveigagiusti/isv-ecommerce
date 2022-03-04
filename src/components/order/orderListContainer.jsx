@@ -3,14 +3,18 @@ import { auth } from '../../firebase/config';
 import React, { useEffect, useState } from 'react'
 import OrderList from './orderList';
 import styles from './order.module.css';
+import StockList from '../stockList/stockList';
 
 export default function OrderListContainer() {
     const [orders, setOrders] = useState([]);
+    const [items, setItems] = useState([])
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(true);
     const [authentication, setAuthentication] = useState(false);
     const [authBtnTag, setAuthBtnTag] = useState('Ingresar');
+
+    const db = getFirestore();
 
     const authenticateUser = async () => { 
         setAuthBtnTag('Cargando...')
@@ -39,7 +43,6 @@ export default function OrderListContainer() {
     const preventDefault = (i) => { i.preventDefault()}    
 
     useEffect(() => {
-        const db = getFirestore();
         const queryCollection = collection(db, 'orders');
         // The querySnapshot method allows for real time updates from the firestore database
         try{
@@ -54,13 +57,31 @@ export default function OrderListContainer() {
         finally{
             setLoading(false)
         }
-    },[]);
+    },[db]);
+
+    useEffect(() => {
+        const queryCollection = collection(db, 'items');
+        try{
+            onSnapshot(queryCollection, 
+            (querySnapshot) => {
+            setItems(querySnapshot.docs.map(i => ( { id: i.id, ...i.data() } )))
+            })
+        }
+        catch(err){
+            alert("Ha habido un error al buscar los items!")
+        }
+        finally{
+            setLoading(false)
+        }
+    },[db]);
 
     return (
         <>{authentication ?
             <div className='container'>
                 <h1>Órdenes:</h1>
                 <div><OrderList loadingState={loading} orders={orders} /></div>
+                <h1>Manejo de Stock:</h1>
+                <div><StockList items={items}/></div>
             </div>
         :
             <div className='container'>

@@ -20,11 +20,10 @@ export default function Cart() {
   }
 
   async function checkEmail(){
-    // await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=36cd52b1c87043f5ac5738db568b5708&email=${buyerEmail}`)
-    // .then(res => res.json())
-    // .then(data => (data.is_free_email.value ? buy() : (setBuyerEmail(''), alert('ingrese un correo electrónico válido.'))))
-    // .catch (err => alert('Error validando su correo electrónico.') && console.error(err))
-    buy()
+    await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=36cd52b1c87043f5ac5738db568b5708&email=${buyerEmail}`)
+    .then(res => res.json())
+    .then(data => (data.is_free_email.value ? buy() : (setBuyerEmail(''), alert('ingrese un correo electrónico válido.'))))
+    .catch (err => alert('Error validando su correo electrónico.') && console.error(err))
   }
 
   async function buy(){
