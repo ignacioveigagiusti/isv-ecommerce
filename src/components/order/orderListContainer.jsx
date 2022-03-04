@@ -41,6 +41,7 @@ export default function OrderListContainer() {
     useEffect(() => {
         const db = getFirestore();
         const queryCollection = collection(db, 'orders');
+        // The querySnapshot method allows for real time updates from the firestore database
         try{
             onSnapshot(queryCollection, 
             (querySnapshot) => {
@@ -62,7 +63,7 @@ export default function OrderListContainer() {
                 <div><OrderList loadingState={loading} orders={orders} /></div>
             </div>
         :
-            <>
+            <div className='container'>
                 <h2>Ingrese su usuario y contraseña:</h2>
                 <form className={styles.loginForm} onSubmit={preventDefault}>
                     <div className="form-group">
@@ -75,7 +76,7 @@ export default function OrderListContainer() {
                     </div>
                     <button type="button" className="btn btn-primary" onClick={authenticateUser}>{authBtnTag}</button>
                 </form>
-            </>
+            </div>
         }
         </>
     )

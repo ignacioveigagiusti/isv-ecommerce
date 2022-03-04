@@ -68,7 +68,7 @@ export default function Cart() {
     clearCart()
   }
 
-  return  <div>
+  return  <div className='container'>
             {cartList.length === 0 ? 
               <>
                 { success ? 

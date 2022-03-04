@@ -6,6 +6,7 @@ import CartContextProvider from './context/cartContext';
 import ItemDetailContainer from './components/item/itemDetailContainer';
 import Cart from './components/cart/cart';
 import OrderListContainer from './components/order/orderListContainer';
+import Footer from './components/footer/footer';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route exact path='/cart' element={<Cart/>} />
             <Route exact path='/orders' element={<OrderListContainer/>} />
           </Routes> 
+          <Footer/>
         </div>
       </CartContextProvider>
     </BrowserRouter>
