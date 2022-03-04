@@ -5,6 +5,7 @@
     font-weight: bold;
     width: 250px;
     margin: auto;
+    padding-bottom: 10px;
 }
 
 .orderTitle {
@@ -17,6 +18,13 @@
     background: floralwhite;
 }
 
+.productTitle{
+    background: lavender;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    margin: auto;
+}
+
 .items {
     background: ghostwhite;
 }
@@ -24,4 +32,10 @@
 .loginForm {
     width: 200px;
     margin: auto;
+}
+
+.orderList{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
 }
