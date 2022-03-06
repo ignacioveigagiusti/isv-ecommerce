@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../item/item.module.css';
 
-function StockCount( { initial, stock, onAdd } ) {
+function StockCount( { initial, stock, id, onAdd } ) {
     const [count,setCount] = useState(initial);
     const [loadingAdd, setLoadingAdd] = useState(false);
 
@@ -15,13 +15,13 @@ function StockCount( { initial, stock, onAdd } ) {
 
     const addCountToStock = () => {
         setLoadingAdd(true);
-        onAdd(Number(count));
+        onAdd(Number(count), id);
         setLoadingAdd(false);
     }
 
     return (  
         <div className={styles.itemCount}>
-            <p>Stock Actual</p>
+            <p>Stock Actual: {initial}</p>
             <div className="input-group">
                 <span className="input-group-btn">
                     <button type="button" className="btn btn-default btn-number" data-type="minus" data-field="quant[1]" onClick={countDecrease}>

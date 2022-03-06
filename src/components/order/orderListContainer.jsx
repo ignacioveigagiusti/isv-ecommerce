@@ -1,4 +1,4 @@
-import { collection, getFirestore, onSnapshot } from 'firebase/firestore';
+import { collection, getFirestore, onSnapshot, query, where } from 'firebase/firestore';
 import { auth } from '../../firebase/config';
 import React, { useEffect, useState } from 'react'
 import OrderList from './orderList';
@@ -60,7 +60,7 @@ export default function OrderListContainer() {
     },[db]);
 
     useEffect(() => {
-        const queryCollection = collection(db, 'items');
+        const queryCollection = query(collection(db, 'items'), where('cat', '!=', 'servicios'));
         try{
             onSnapshot(queryCollection, 
             (querySnapshot) => {

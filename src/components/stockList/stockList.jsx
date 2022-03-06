@@ -1,4 +1,4 @@
-import { collection, getFirestore, } from 'firebase/firestore';
+import { updateDoc, getFirestore, doc } from 'firebase/firestore';
 import React from 'react'
 import styles from '../order/order.module.css';
 import StockCount from './stockCount';
@@ -6,11 +6,17 @@ import StockCount from './stockCount';
 export default function StockList(props) {
     const db = getFirestore();
 
-    const changeStock = (newStock) => {
+    const changeStock = async (newStock, id) => {
         //Stock update
+        const itemRef = doc(db, 'items', id);
 
+        await updateDoc(itemRef, {
+            stock: newStock
+        })
+        .then(alert('Stock actualizado!'))
+        .catch(err => alert('Hubo un error al actualizar el stock'))
     }
-    
+
     return (
     <>
     {props.items.map(i =>
@@ -18,7 +24,7 @@ export default function StockList(props) {
             <div className={styles.orderTitle}>
                 <h2>{i.name}</h2>
             </div>
-            <StockCount initial={i.stock} stock='1000000' onAdd={changeStock}/>
+            <StockCount initial={i.stock} stock='1000000' id={i.id} onAdd={changeStock}/>
         </div>
     )}
     </>
