@@ -1,4 +1,18 @@
-Hello! This e-commerce website was created by Ignacio Sebastián Veiga, in the context of a React.js course at Coderhouse (the Argentinian programming school).
+# ISV Shop
+
+Hello! This e-commerce website was created by Ignacio Sebastián Veiga, in the context of a React.js course at Coderhouse (Argentina, 2022).
+
+## App and Item List
+
+The app is an e-commerce SPA created with React JS in which you can buy mock products from an item list that can be filtered by category. You can also access an item's detail page to read more information and buy it from there. to buy, you simply select the quantity with the counter in the item's card or detail and click on the button below to add it to your cart. You can only add as many items as there are in stock at the moment.
+
+## Cart and Ordering
+
+You can click on the cart widget at the top-right of the page and go to a view of your cart. If the cart is empty, you'll only see a message and a return button, otherwise you'll see a detail of the items in your order and you'll be able to modify their quantities, remove items, fill in a form with your personal information and finally make the order. As it is a mock proyect, no credit card or payment method is required by the form, and we encourage that you do not submit sensible data on it besides your name, an email and a telephone number. Once the order has been placed, you'll receive a message with yout order id. If your personal data is of invalid form, you'll get an alert message, and if you ordered some quantity of an item, but the stock of the item has changed while it was in your cart and that quantity exceeds the current stock, the quantity on your order will be automatically changed to the current stock of the product and you'll get an alert asking you to try to place the order again.
+
+## Stock and Order Management
+
+On the footer of the page, there's a link to the Stock and Order Management component. Once you click on it, you'll be required to log in, the user is 'isvacustica@gmail.com' and the password 'admin12345'. Once authenticated, you'll be able to see the orders that are currently on the firestore database related to the app and you'll be able to remove them (the idea is that the manager of the store could remove them once the order has been delivered). You can also modify the stock of the items in the database with a counter similar to that on the item cards, according to what would be physically available if this was a real store.
 
 ------------------------------------Create React App Documentation------------------------------------
 
