@@ -20,10 +20,11 @@ export default function Cart() {
   }
 
   async function checkEmail(){
-    await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=36cd52b1c87043f5ac5738db568b5708&email=${buyerEmail}`)
-    .then(res => res.json())
-    .then(data => (data.is_free_email.value ? buy() : (setBuyerEmail(''), alert('ingrese un correo electrónico válido.'))))
-    .catch (err => alert('Error validando su correo electrónico.') && console.error(err))
+    // await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=36cd52b1c87043f5ac5738db568b5708&email=${buyerEmail}`)
+    // .then(res => res.json())
+    // .then(data => (data.is_free_email.value ? buy() : (setBuyerEmail(''), alert('ingrese un correo electrónico válido.'))))
+    // .catch (err => alert('Error validando su correo electrónico.') && console.error(err))
+    buy()
   }
 
   async function buy(){
@@ -35,7 +36,7 @@ export default function Cart() {
       order.items = [];
       cartList.map(i => order.items.push({id: i.id, name: i.name, price: i.price, quantity: i.quantity}));
       order.total = totalPrice;
-      addDoc(orderCollection, order)
+      await addDoc(orderCollection, order)
       .then(docRef => {
         setOrderId(docRef.id);
       })

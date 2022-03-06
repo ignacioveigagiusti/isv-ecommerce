@@ -95,7 +95,7 @@ export default function OrderListContainer() {
                         <label htmlFor="password">Contraseña</label>
                             <input type="password" autoComplete="current-password" className="form-control" id="password" placeholder="Password" value={password} onInput={i => setPassword(i.target.value)} onKeyPress={handleKeypress} required/>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={authenticateUser}>{authBtnTag}</button>
+                    <button className="btn btn-primary" onClick={authenticateUser}>{authBtnTag}</button>
                 </form>
             </div>
         }

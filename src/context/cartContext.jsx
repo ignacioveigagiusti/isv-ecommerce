@@ -17,8 +17,12 @@ export default function CartContextProvider({ children }) {
                 setTotalQuantity(quantitySum());
             }
         }else{
-            setCartList([...cartList, item]);
-            setTotalQuantity(quantitySum());
+            if (item.stock > 0) {
+                setCartList([...cartList, item]);
+                setTotalQuantity(quantitySum())
+            } else{
+                alert('Sin stock!')
+            }
         }
     }
 

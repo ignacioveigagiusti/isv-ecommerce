@@ -18,15 +18,15 @@ export default function StockList(props) {
     }
 
     return (
-    <>
-    {props.items.map(i =>
+    <div className={styles.orderList}>
+        {props.items.map(i =>
         <div className={styles.orderCard}>
             <div className={styles.orderTitle}>
                 <h2>{i.name}</h2>
             </div>
             <StockCount initial={i.stock} stock='1000000' id={i.id} onAdd={changeStock}/>
         </div>
-    )}
-    </>
+        )}
+    </div>
     )
 }

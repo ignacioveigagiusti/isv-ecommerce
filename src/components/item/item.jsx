@@ -29,7 +29,7 @@ export default function Item(item) {
             </Link>
           </div>
           <div className={styles.itemCounter}>
-            <ItemCount stock={item.stock} initial='1' onAdd={onAdd}/>
+            <ItemCount stock={item.stock} initial='1' onAdd={onAdd} itemCat={item.cat}/>
           </div>
         </div>;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './item.module.css';
 
-function ItemCount( { initial, stock, onAdd } ) {
+function ItemCount( { initial, stock, onAdd, itemCat } ) {
     const [count,setCount] = useState(initial);
     const [loadingAdd, setLoadingAdd] = useState(false);
 
@@ -21,6 +21,8 @@ function ItemCount( { initial, stock, onAdd } ) {
 
     return (  
         <div className={styles.itemCount}>
+            {stock > 0 ?
+            <>
             <p>Cantidad</p>
             <div className="input-group">
                 <span className="input-group-btn">
@@ -36,8 +38,17 @@ function ItemCount( { initial, stock, onAdd } ) {
                 </span>
             </div>
             <button type="button" className={`btn btn-primary ${styles.addToCartBtn}`} onClick={addCountToCart}>
-                {!loadingAdd ? 'Añadir' : 'Añadiendo'}
+            {!loadingAdd ? 'Añadir' : 'Añadiendo'}
             </button>
+            {itemCat !== 'servicios' ?
+            <p>Stock actual: {stock}</p>
+            :
+            <></>
+            }
+            </>
+            :
+            <h2>Sin stock!</h2>    
+            }           
         </div>
             
     );
