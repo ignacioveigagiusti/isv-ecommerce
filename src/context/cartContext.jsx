@@ -82,7 +82,21 @@ export default function CartContextProvider({ children }) {
     }, [cartList]);
     
 
-    return <cartContext.Provider value={{ cartList, addToCart, clearCart, removeItem, addQuantity, subtractQuantity, priceSum, totalPrice, setTotalPrice, quantitySum, totalQuantity, setTotalQuantity, findDuplicate }}>
+    return <cartContext.Provider value={{ 
+        cartList, 
+        addToCart, 
+        clearCart, 
+        removeItem, 
+        addQuantity, 
+        subtractQuantity, 
+        priceSum, 
+        totalPrice, 
+        setTotalPrice, 
+        quantitySum, 
+        totalQuantity, 
+        setTotalQuantity, 
+        findDuplicate
+        }}>
         {children}
     </cartContext.Provider>;
 }

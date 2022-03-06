@@ -39,3 +39,8 @@
     flex-wrap: wrap;
     row-gap: 20px;
 }
+
+h1 {
+    padding: 20px 0;
+    margin-top: 10px;
+}

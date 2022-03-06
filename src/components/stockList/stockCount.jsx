@@ -10,7 +10,7 @@ function StockCount( { initial, stock, id, onAdd } ) {
     }
 
     const countDecrease = () => {
-        setCount(count>1 ? count-1 : count);
+        setCount(count>0 ? count-1 : count);
     }
 
     const addCountToStock = () => {

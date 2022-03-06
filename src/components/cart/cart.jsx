@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addDoc, collection, doc, documentId, getFirestore, query, updateDoc, where, getDocs } from 'firebase/firestore'
+import { addDoc, collection, doc, documentId, getFirestore, query, updateDoc, where, getDocs, getDoc } from 'firebase/firestore'
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/cartContext';
 import styles from './cart.module.css';
@@ -11,7 +11,7 @@ export default function Cart() {
   const [buyerEmail, setBuyerEmail] = useState('');
   const [orderId, setOrderId] = useState('');
   const [success, setSuccess] = useState(false);
-  const { cartList, clearCart, totalPrice, setTotalPrice } = useCartContext();
+  const { cartList, clearCart, totalPrice, setTotalPrice, priceSum } = useCartContext();
   const db = getFirestore();
   const orderCollection = collection(db, 'orders');
 
@@ -19,12 +19,22 @@ export default function Cart() {
     e.preventDefault();
   }
 
+  async function checkStock(){
+    cartList.forEach(i => {
+      getDoc(doc(db, 'items', i.id))
+      .then(res =>
+      (i.quantity > res.data().stock ?
+      (i.quantity = res.data().stock, alert(`No hay stock suficiente de ${i.name}, por favor reintente con el stock actualizado.`), setTotalPrice(priceSum())) :
+      checkEmail()
+      ))
+    })
+  }
+
   async function checkEmail(){
-    // await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=36cd52b1c87043f5ac5738db568b5708&email=${buyerEmail}`)
-    // .then(res => res.json())
-    // .then(data => (data.is_free_email.value ? buy() : (setBuyerEmail(''), alert('ingrese un correo electrónico válido.'))))
-    // .catch (err => alert('Error validando su correo electrónico.') && console.error(err))
-    buy()
+    await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=36cd52b1c87043f5ac5738db568b5708&email=${buyerEmail}`)
+    .then(res => res.json())
+    .then(data => (data.is_free_email.value ? buy() : (setBuyerEmail(''), alert('ingrese un correo electrónico válido.'))))
+    .catch (err => alert('Error validando su correo electrónico.') && console.error(err))
   }
 
   async function buy(){
@@ -108,7 +118,7 @@ export default function Cart() {
                           <label htmlFor="buyerEmail">Email</label>
                           <input type="email" className="form-control" id="buyerEmail" aria-describedby="emailHelp" placeholder="Enter email" value={buyerEmail} onInput={e => setBuyerEmail(e.target.value)} required/>
                         </div>
-                        <button className="btn btn-primary" onClick={checkEmail}>
+                        <button className="btn btn-primary" onClick={checkStock}>
                             Efectuar Compra
                         </button>
                         <button type="button" className="btn btn-secondary" onClick={clear}>
