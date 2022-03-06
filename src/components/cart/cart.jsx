@@ -20,6 +20,7 @@ export default function Cart() {
   }
 
   async function checkStock(){
+    // function that checks if the stocks of the items have changed while they were in the cartList, and modifies them if the quantity exceeds the current stock
     cartList.forEach(i => {
       getDoc(doc(db, 'items', i.id))
       .then(res =>
