@@ -37,7 +37,7 @@ export default function OrderListContainer() {
 
     useEffect(() => {
         const queryCollection = collection(db, 'orders');
-        // The querySnapshot method allows for real time updates from the firestore database
+        // The onSnapshot method allows for real time updates from the firestore database
         try{
             onSnapshot(queryCollection, 
             (querySnapshot) => {
