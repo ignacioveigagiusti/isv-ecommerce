@@ -16,8 +16,9 @@ export default function Order(order) {
         }
         catch{
             alert("Ha habido un error al eliminar la órden!")
+            setLoadingRemoveOrder(false)
         }
-        setLoadingRemoveOrder(false)
+
     }
 
   return (

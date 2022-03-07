@@ -1,7 +1,7 @@
 import { updateDoc, getFirestore, doc } from 'firebase/firestore';
 import React from 'react'
-import styles from '../order/order.module.css';
-import StockCount from './stockCount';
+import styles from '../Order/order.module.css';
+import StockCount from './StockCount';
 
 export default function StockList(props) {
     const db = getFirestore();
@@ -20,7 +20,7 @@ export default function StockList(props) {
     return (
     <div className={styles.orderList}>
         {props.items.map(i =>
-        <div className={styles.orderCard}>
+        <div className={styles.orderCard} key={i.id}>
             <div className={styles.orderTitle}>
                 <h2>{i.name}</h2>
             </div>

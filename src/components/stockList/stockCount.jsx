@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../item/item.module.css';
+import styles from '../Item/item.module.css';
 
 function StockCount( { initial, stock, id, onAdd } ) {
     const [count,setCount] = useState(initial);

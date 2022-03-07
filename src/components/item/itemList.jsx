@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from './item';
+import Item from './Item';
 import styles from './itemList.module.css'
 
 export default function ItemList(props) {

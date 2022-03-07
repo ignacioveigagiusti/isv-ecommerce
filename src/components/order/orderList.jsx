@@ -1,5 +1,5 @@
 import React from 'react'
-import Order from './order'
+import Order from './Order'
 import styles from './order.module.css';
 
 export default function OrderList(props) {

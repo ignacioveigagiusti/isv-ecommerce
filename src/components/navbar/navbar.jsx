@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { useCartContext } from '../../context/cartContext';
-import CartWidget from '../cartWidget/cartWidget';
+import { useCartContext } from '../../context/CartContext';
+import CartWidget from '../CartWidget/CartWidget';
 import styles from './navbar.module.css'
 
 function NavBar() {

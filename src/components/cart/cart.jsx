@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { addDoc, collection, doc, documentId, getFirestore, query, updateDoc, where, getDocs, getDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, documentId, getFirestore, query, updateDoc, where, getDocs } from 'firebase/firestore'
 import { Link } from 'react-router-dom';
-import { useCartContext } from '../../context/cartContext';
+import { useCartContext } from '../../context/CartContext';
 import styles from './cart.module.css';
-import CartItem from './cartItem';
+import CartItem from './CartItem';
 
 export default function Cart() {
   const [buyerName, setBuyerName] = useState('');
@@ -14,6 +14,7 @@ export default function Cart() {
   const { cartList, clearCart, totalPrice, setTotalPrice, priceSum } = useCartContext();
   const db = getFirestore();
   const orderCollection = collection(db, 'orders');
+  const itemCollection = collection(db, 'items')
 
   function preventDefault(e){
     e.preventDefault();
@@ -21,14 +22,30 @@ export default function Cart() {
 
   async function checkStock(){
     // function that checks if the stocks of the items have changed while they were in the cartList, and modifies them if the quantity exceeds the current stock, alerting the user
-    cartList.forEach(i => {
-      getDoc(doc(db, 'items', i.id))
-      .then(res =>
-      (i.quantity > res.data().stock ?
-      (i.quantity = res.data().stock, alert(`No hay stock suficiente de ${i.name}, por favor reintente con el stock actualizado.`), setTotalPrice(priceSum())) :
-      checkEmail()
-      ))
-    })
+    let stockOK = true
+    
+    try {
+      const checkStock = query(itemCollection, where( documentId(), 'in', cartList.map(i => i.id)))
+      const querySnapshot = await getDocs(checkStock)
+      const querySnapshotArray = querySnapshot.docs.map(doc => ({id: doc.id , ...doc.data()}))
+      for (let docum of querySnapshotArray) {
+        let [itemInCart] = cartList.filter(i => i.id === docum.id)
+        if (itemInCart.quantity > docum.stock) {
+          itemInCart.quantity = docum.stock; 
+          alert(`No hay stock suficiente de ${itemInCart.name}, por favor reintente con el stock actualizado.`); 
+          setTotalPrice(priceSum());
+          stockOK = false
+        }
+      }
+    }
+    catch (error) {
+      alert('Error al revisar stock en la base de datos')
+    }
+    finally{
+      if (stockOK) {
+        checkEmail()
+      }
+    }
   }
 
   async function checkEmail(){
@@ -56,9 +73,7 @@ export default function Cart() {
       setSuccess(true);
 
       //Stock update
-      const queryCollection = collection(db, 'items')
-
-      const updateStock = query(queryCollection, where( documentId(), 'in', cartList.map(i => i.id)));
+      const updateStock = query(itemCollection, where( documentId(), 'in', cartList.map(i => i.id)));
       
       const querySnapshot = await getDocs(updateStock)
       querySnapshot.forEach((docum) => {

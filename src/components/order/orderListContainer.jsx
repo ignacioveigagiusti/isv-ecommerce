@@ -1,9 +1,9 @@
 import { collection, getFirestore, onSnapshot, query, where } from 'firebase/firestore';
 import { auth } from '../../firebase/config';
 import React, { useEffect, useState } from 'react'
-import OrderList from './orderList';
+import OrderList from './OrderList';
 import styles from './order.module.css';
-import StockList from '../stockList/stockList';
+import StockList from '../StockList/StockList';
 
 export default function OrderListContainer() {
     const [orders, setOrders] = useState([]);

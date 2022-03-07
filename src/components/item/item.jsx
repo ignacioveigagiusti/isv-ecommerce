@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ItemCount from './itemCount';
+import ItemCount from './ItemCount';
 import styles from './item.module.css';
-import { useCartContext } from '../../context/cartContext';
+import { useCartContext } from '../../context/CartContext';
 
 export default function Item(item) {
 
