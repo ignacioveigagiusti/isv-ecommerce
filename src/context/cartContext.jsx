@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-export const cartContext = createContext([])
+export const CartContext = createContext([])
 
-export function useCartContext() {return useContext(cartContext)} 
+export function useCartContext() {return useContext(CartContext)} 
 
 export default function CartContextProvider({ children }) {
     const [cartList, setCartList] = useState([]);
@@ -82,7 +82,7 @@ export default function CartContextProvider({ children }) {
     }, [cartList]);
     
 
-    return <cartContext.Provider value={{ 
+    return <CartContext.Provider value={{ 
         cartList, 
         addToCart, 
         clearCart, 
@@ -98,5 +98,5 @@ export default function CartContextProvider({ children }) {
         findDuplicate
         }}>
         {children}
-    </cartContext.Provider>;
+    </CartContext.Provider>;
 }
