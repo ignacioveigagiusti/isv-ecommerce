@@ -33,13 +33,6 @@ export default function OrderListContainer() {
         setAuthBtnTag('Ingresar')
     }
 
-    const handleKeypress = e => {
-        //it triggers authentication by pressing the enter key
-      if (e.keyCode === 13) {
-        authenticateUser();
-      }
-    };
-
     const preventDefault = (i) => { i.preventDefault()}    
 
     useEffect(() => {
@@ -93,7 +86,7 @@ export default function OrderListContainer() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Contraseña</label>
-                            <input type="password" autoComplete="current-password" className="form-control" id="password" placeholder="Password" value={password} onInput={i => setPassword(i.target.value)} onKeyPress={handleKeypress} required/>
+                            <input type="password" autoComplete="current-password" className="form-control" id="password" placeholder="Password" value={password} onInput={i => setPassword(i.target.value)} required/>
                     </div>
                     <button className="btn btn-primary" onClick={authenticateUser}>{authBtnTag}</button>
                 </form>
