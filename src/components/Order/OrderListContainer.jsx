@@ -78,10 +78,10 @@ export default function OrderListContainer() {
             </div>
         :
             <div className='container'>
-                <h2>Ingrese su usuario y contraseña:</h2>
+                <h2>Ingrese su email y contraseña:</h2>
                 <form className={styles.loginForm} onSubmit={preventDefault}>
                     <div className="form-group">
-                        <label htmlFor="userName">Usuario</label>
+                        <label htmlFor="userName">Email</label>
                             <input type="text" autoComplete="username" className="form-control" id="userName" placeholder="Usuario" value={username} onInput={i => setUsername(i.target.value)} required/>
                     </div>
                     <div className="form-group">
